@@ -15,8 +15,10 @@ function splitSentence(string) {
 }
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+/* ref. eslint: https://eslint.org/docs/rules/prefer-template
+  Foi utilizado a formatação `${}` conforme orientações. */
+function concatName(array) {
+  return (`${array[(array.length - 1)]}, ${array[0]}`);
 }
 
 // Desafio 5
