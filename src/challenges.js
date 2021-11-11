@@ -41,8 +41,16 @@ function highestCount(numbers) {
 }
 
 // Desafio 7
-function catAndMouse() {
-  // seu código aqui
+// ref.: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
+function catAndMouse(mouse, cat1, cat2) {
+  let differenceCat1 = Math.abs(cat1 - mouse);
+  let differenceCat2 = Math.abs(cat2 - mouse);
+  if (differenceCat1 > differenceCat2) {
+    return ('cat2');
+  } if (differenceCat2 > differenceCat1) {
+    return ('cat1');
+  }
+  return ('os gatos trombam e o rato foge');
 }
 
 // Desafio 8
