@@ -42,83 +42,78 @@ function highestCount(numbers) {
 
 // Desafio 7
 // ref.: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
+function winner(answer, differenceCat1, differenceCat2) {
+  if (differenceCat1 > differenceCat2) {
+    answer = 'cat2';
+  } else if (differenceCat2 > differenceCat1) {
+    answer = 'cat1';
+  } else {
+    answer = 'os gatos trombam e o rato foge';
+  }
+
+  return answer;
+}
+
 function catAndMouse(mouse, cat1, cat2) {
   let differenceCat1 = Math.abs(cat1 - mouse);
   let differenceCat2 = Math.abs(cat2 - mouse);
-  if (differenceCat1 > differenceCat2) {
-    return ('cat2');
-  } else if (differenceCat2 > differenceCat1) {
-    return ('cat1');
-  }
-  return ('os gatos trombam e o rato foge');
+  let answer;
+
+  return (winner(answer, differenceCat1, differenceCat2));
 }
 
 // Desafio 8
+function fizzBuzzAux(newArray, div3, div5) {
+  if (div3 === 0 && div5 === 0) {
+    newArray.push('fizzBuzz');
+  } else if (div3 === 0) {
+    newArray.push('fizz');
+  } else if (div5 === 0) {
+    newArray.push('buzz');
+  } else {
+    newArray.push('bug!');
+  }
+}
+
 function fizzBuzz(numbers) {
   let newArray = [];
+  let div3;
+  let div5;
   for (let number of numbers) {
-    if (number % 15 === 0) {
-      newArray.push('fizzBuzz');
-    } else if (number % 3 === 0) {
-      newArray.push('fizz');
-    } else if (number % 5 === 0) {
-      newArray.push('buzz');
-    } else {
-      newArray.push('bug!');
-    }
+    div3 = number % 3;
+    div5 = number % 5;
+    fizzBuzzAux(newArray, div3, div5);
   }
   return newArray;
 }
 
 // Desafio 9
+function encodeAux(char) {
+  return ('aeiou'.indexOf(char) + 1);
+}
+
 function encode(phrase) {
   phrase = phrase.split('');
-  for (let i in phrase) {
-    switch (phrase[i]) {
-    case 'a':
-      phrase[i] = 1;
-      break;
-    case 'e':
-      phrase[i] = 2;
-      break;
-    case 'i':
-      phrase[i] = 3;
-      break;
-    case 'o':
-      phrase[i] = 4;
-      break;
-    case 'u':
-      phrase[i] = 5;
-      break;
-    default:
+  for (let index in phrase) {
+    if ('aeiou'.includes(phrase[index])) {
+      phrase[index] = encodeAux(phrase[index]);
     }
   }
-  return phrase.join('')
+  return phrase.join('');
+}
+
+function decodeAux(char) {
+  return ('aeiou'[char - 1]);
 }
 
 function decode(phrase) {
   phrase = phrase.split('');
-  for (let i in phrase) {
-    switch (phrase[i]) {
-    case '1':
-      phrase[i] = 'a';
-      break;
-    case '2':
-      phrase[i] = 'e';
-      break;
-    case '3':
-      phrase[i] = 'i';
-      break;
-    case '4':
-      phrase[i] = 'o';
-      break;
-    case '5':
-      phrase[i] = 'u';
-      break;
-    default:
+  for (let index in phrase) {
+    if ('12345'.includes(phrase[index])) {
+      phrase[index] = decodeAux(phrase[index]);
     }
   }
-  return phrase.join('')
+  return phrase.join('');
 }
 
 module.exports = {
