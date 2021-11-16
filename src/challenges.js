@@ -22,6 +22,8 @@ function concatName(array) {
 }
 
 // Desafio 5
+// Ajustada a função footballPoints seguindo code review (@SrTonn - Wellington Rodrigues)
+
 function footballPoints(wins, ties) {
   return ((wins * 3) + (ties * 1));
 }
@@ -42,7 +44,8 @@ function highestCount(numbers) {
 
 // Desafio 7
 // ref.: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
-function winner(answer, differenceCat1, differenceCat2) {
+
+/* function winner(answer, differenceCat1, differenceCat2) {
   if (differenceCat1 > differenceCat2) {
     answer = 'cat2';
   } else if (differenceCat2 > differenceCat1) {
@@ -52,14 +55,24 @@ function winner(answer, differenceCat1, differenceCat2) {
   }
 
   return answer;
-}
+} */
+
+// Ajustada a função catAndMouse seguindo code review (@julianoboese - Juliano Boese).
 
 function catAndMouse(mouse, cat1, cat2) {
   let differenceCat1 = Math.abs(cat1 - mouse);
   let differenceCat2 = Math.abs(cat2 - mouse);
   let answer;
 
-  return (winner(answer, differenceCat1, differenceCat2));
+  if (differenceCat1 > differenceCat2) {
+    answer = 'cat2';
+  } else if (differenceCat2 > differenceCat1) {
+    answer = 'cat1';
+  } else {
+    answer = 'os gatos trombam e o rato foge';
+  }
+
+  return (answer);
 }
 
 // Desafio 8
